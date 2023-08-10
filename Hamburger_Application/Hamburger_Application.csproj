@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-Hamburger_Application-7e7ef5f1-7bfe-4b2c-a331-8dece746bcec</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\User\Data\**" />
+    <Compile Remove="wwwroot\ProductImages\Dessert\**" />
+    <Compile Remove="wwwroot\ProductImages\Menu\**" />
+    <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\User\Data\**" />
+    <Content Remove="wwwroot\ProductImages\Dessert\**" />
+    <Content Remove="wwwroot\ProductImages\Menu\**" />
+    <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\User\Data\**" />
+    <EmbeddedResource Remove="wwwroot\ProductImages\Dessert\**" />
+    <EmbeddedResource Remove="wwwroot\ProductImages\Menu\**" />
+    <None Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\User\Data\**" />
+    <None Remove="wwwroot\ProductImages\Dessert\**" />
+    <None Remove="wwwroot\ProductImages\Menu\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
+    <PackageReference Include="MailKit" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.18">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\ProductImages\Hamburger1\" />
+    <Folder Include="wwwroot\ProductImages\Fries1\" />
+    <Folder Include="wwwroot\ProductImages\Dessert1\" />
+    <Folder Include="wwwroot\ProductImages\Drink\" />
+    <Folder Include="wwwroot\ProductImages\Menu1\" />
+    <Folder Include="wwwroot\ProductImages\Sauce1\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,67 @@
+﻿@inject SignInManager<AppUser> signInManager;
+@inject UserManager<AppUser> userManager;
+
+@{
+    var settingsBackgroundColor = "#F49301";
+    var settingsColor = "#FFF";
+    if (signInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("User"))
+        {
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+            if (appUser is not null)
+            {
+                if (appUser.IsDark)
+                {
+                    settingsBackgroundColor = "#B12103";
+                }
+            }
+        }
+    }
+}
+
+
+<div class="list-group col-md-10" style="font-family:'Comic Sans MS'; font-size:larger;">
+    <a class="list-group-item list-group-item-action active" style="background-color:@settingsBackgroundColor; color:@settingsColor; font-size: 30px;" aria-current="true">Settings</a>
+
+    @{
+        AppUser user = await userManager.FindByNameAsync(User.Identity.Name);
+        if (user.IsDark)
+        {
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="PersonalInfo" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Informations</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="ConfirmedOrders" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Orders</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Address" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Address</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Email" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Email Address</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Password" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Password</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Theme" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mbf Hamburger Theme</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="DeleteAccount" class="list-group-item btn-outline-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete My Account</a>
+        }
+        else
+        {
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="PersonalInfo" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personal Informations</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="ConfirmedOrders" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Orders</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Address" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Address</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Email" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Email Address</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Password" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My Password</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="Theme" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mbf Hamburger Theme</a>
+
+            <a asp-area="User" asp-controller="AccountSettings" asp-action="DeleteAccount" class="list-group-item btn-outline-secondary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete My Account</a>
+        }
+    }
+</div>
+
+@section Scripts{
+    <script src="~/js/bootstrap.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
